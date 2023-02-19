@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.container { 
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  background-color: #1A202C;
+  margin: 0;
+  padding: 0;
+}
+
+.content { 
+  padding: 2rem;
+}
