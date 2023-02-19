@@ -11,7 +11,7 @@ import {
 
 function ListAcoes() {
   return (
-    <div className="containerListAcoes">
+    <containerListAcoes>
       <TableContainer>
         <Table size="lg">
           <Thead>
@@ -25,10 +25,9 @@ function ListAcoes() {
               <Td>inches</Td>
             </Tr>
           </Tbody>
-
         </Table>
       </TableContainer>
-    </div>
+    </containerListAcoes>
   );
 }
 
