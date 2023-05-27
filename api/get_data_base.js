@@ -34,10 +34,8 @@ async function getDataBase() {
 
     return data;
   });
-
-  console.log(data);
   await browser.close();
   return data;
 }
 
-module.exports = getDataBase
+module.exports = getDataBase;

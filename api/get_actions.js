@@ -1,12 +1,8 @@
-const functions = require("firebase-functions");
-const app = require("express")();
-const DataBase = require("./get_data_base");
+const carteira_module = require("./carteira");
+const data_base = require("./get_data_base");
 
-const admin = require("firebase-admin");
-admin.initializeApp();
-
-app.get("/ranking", function (request, response) {
-  DataBase()
+async function getActions() {
+  const result_data_base = data_base()
     .then((db) => {
       //Parametros para o ranking:
       var liquidez_minima_2_meses = 200000;
@@ -75,11 +71,15 @@ app.get("/ranking", function (request, response) {
         });
       }
 
-      response.json({ message: "sucesso", acoes: array_visualização });
+      return array_visualização;
     })
     .catch((erro) => {
-      console.error(erro);
+      return erro;
     });
-});
 
-exports.api = functions.https.onRequest(app);
+  return result_data_base;
+}
+
+module.exports = {
+  getActions,
+};
