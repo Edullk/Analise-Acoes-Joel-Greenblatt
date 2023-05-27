@@ -4,13 +4,13 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
     TableContainer,
+    Progress,
   } from '@chakra-ui/react'
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Actions { 
   "ACAO" : string;
@@ -42,8 +42,8 @@ function List() {
   }, []);
 
   return (
-    <TableContainer>
-    <Table size='sm'>
+    <TableContainer bg={"#2D3748"} w={"100%"}>
+    <Table size='sm' colorScheme='whiteAlpha'>
       <Thead>
         <Tr>
           <Th>ACAO</Th>
@@ -62,6 +62,9 @@ function List() {
       </Tbody>
 
     </Table>
+    {data.length === 0 &&
+    <Progress size='xs' isIndeterminate />
+    }
   </TableContainer>
   )
 }
