@@ -90,7 +90,6 @@ async function getActions() {
           lista_repetidos_removidos.push(acao)
         }
       }) 
-      console.log(lista_repetidos_removidos)
       
       return lista_repetidos_removidos;
     })
