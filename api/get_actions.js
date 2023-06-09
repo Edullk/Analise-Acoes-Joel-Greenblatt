@@ -62,16 +62,37 @@ async function getActions() {
       }
       const bala_classificado = earning_yield_classificado.sort(OrdenarBALA);
 
-      var array_visualização = [];
-      for (var i = 0; i < 31; i++) {
-        array_visualização.push({
-          ACAO: bala_classificado[i].Papel,
-          COTACAO: bala_classificado[i]["Cotação"],
-          RANKING: bala_classificado[i].RANKING_BALA,
+      //Removendo numero do tipo da ação
+    
+      const lista_numeros_finais_removidos = bala_classificado.map((acao)=> {
+        acao.Papel = acao.Papel.slice(0, -1)
+        return acao
+      })
+
+
+      var array_visualizacao = [];
+      for (var i = 0; i < 40; i++) {
+        array_visualizacao.push({
+          ACAO: lista_numeros_finais_removidos[i].Papel,
+          COTACAO: lista_numeros_finais_removidos[i]["Cotação"],
+          RANKING: lista_numeros_finais_removidos[i].RANKING_BALA,
         });
       }
 
-      return array_visualização;
+
+      var repetidos = []
+      const lista_repetidos_removidos = [];
+      array_visualizacao.map((acao)=> {
+        console.log(repetidos.includes(acao.ACAO))
+        if(!repetidos.includes(acao.ACAO)){
+          console.log("Entrou no if")
+          repetidos.push(acao.ACAO);
+          lista_repetidos_removidos.push(acao)
+        }
+      }) 
+      console.log(lista_repetidos_removidos)
+      
+      return lista_repetidos_removidos;
     })
     .catch((erro) => {
       return erro;
